@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        // "module": "commonjs",
+        "allowSyntheticDefaultImports": true,
+        "baseUrl": "./",
+        "paths": {
+          "@/*": ["src/*"],
+          "assets/*": ["src/assets/*"],
+          "plugins/*": ["src/plugins/*"],
+          "service/*": ["src/service/*"],
+          "api/*": ["src/api/*"],
+          "util/*": ["src/util/*"],
+          "mixins/*": ["src/mixins/*"],
+          "components/*": ["src/components/*"]
+        }
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}

@@ -26,8 +26,8 @@
          </el-form-item>
       </el-form>
       <el-row>
-         <el-table @row-click="clickRow" ref="refTable" :data="userList" @selection-change="handleSelectionChange" height="260px">
-            <el-table-column type="selection" width="55"></el-table-column>
+         <el-table row-key="userName" @row-click="clickRow" ref="refTable" :data="userList" @selection-change="handleSelectionChange" height="260px">
+            <el-table-column type="selection" :reserve-selection="true" width="55"></el-table-column>
             <el-table-column label="用户名称" prop="userName" :show-overflow-tooltip="true" />
             <el-table-column label="用户昵称" prop="nickName" :show-overflow-tooltip="true" />
             <el-table-column label="邮箱" prop="email" :show-overflow-tooltip="true" />
@@ -54,7 +54,7 @@
       <template #footer>
          <div class="dialog-footer">
             <el-button type="primary" @click="handleSelectUser">确 定</el-button>
-            <el-button @click="visible = false">取 消</el-button>
+            <el-button @click="handleCancel">取 消</el-button>
          </div>
       </template>
    </el-dialog>
@@ -129,9 +129,15 @@ function handleSelectUser() {
     proxy.$modal.msgSuccess(res.msg);
     if (res.code === 200) {
       visible.value = false;
+      proxy.$refs["refTable"].clearSelection();
       emit("ok");
     }
   });
+}
+
+function handleCancel(){
+   visible.value=false;
+   proxy.$refs["refTable"].clearSelection();
 }
 
 defineExpose({

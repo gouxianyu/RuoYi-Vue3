@@ -96,9 +96,9 @@ function changeRadioValue(value) {
         cycle02.value = Number(indexArr[1])
         radioValue.value = 3
     } else if (value.indexOf("/") > -1) {
-        const indexArr = value.split('#')
-        average01.value = Number(indexArr[1])
-        average02.value = Number(indexArr[0])
+        const indexArr = value.split('/')
+        average01.value = Number(indexArr[0])
+        average02.value = Number(indexArr[1])
         radioValue.value = 4
     } else {
         checkboxList.value = [...new Set(value.split(',').map(item => Number(item)))]
