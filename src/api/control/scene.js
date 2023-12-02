@@ -43,3 +43,21 @@ export function delScene(sceneId) {
     method: 'delete'
   })
 }
+
+
+// 场景绑定机器人
+export function bindRobot(data) {
+  return request({
+    url: '/control/scene/bindRobot',
+    method: 'put',
+    data: data
+  })
+}
+
+// 查询场景绑定的机器人详细
+export function getRobotsBySceneId(sceneId) {
+  return request({
+    url: '/control/scene/getBindRobot/' + parseStrEmpty(sceneId),
+    method: 'get'
+  })
+}

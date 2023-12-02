@@ -1,5 +1,5 @@
 import request from '@/utils/request'
-
+import { parseStrEmpty } from "@/utils/ruoyi";
 // 查询部门列表
 export function listDept(query) {
   return request({
@@ -48,5 +48,23 @@ export function delDept(deptId) {
   return request({
     url: '/system/dept/' + deptId,
     method: 'delete'
+  })
+}
+
+
+// 部门绑定机器人
+export function bindRobot(data) {
+  return request({
+    url: '/system/dept/bindRobot',
+    method: 'put',
+    data: data
+  })
+}
+
+// 查询部门绑定的机器人详细
+export function getRobotsByDeptId(deptId) {
+  return request({
+    url: '/system/dept/getBindRobot/' + parseStrEmpty(deptId),
+    method: 'get'
   })
 }
